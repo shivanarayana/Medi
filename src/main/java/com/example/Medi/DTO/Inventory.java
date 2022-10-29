@@ -2,33 +2,30 @@ package com.example.Medi.DTO;
 
 import lombok.Getter;
 import lombok.Setter;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Setter
 @Getter
 @Entity
-@Table(name = "Inventory")
+@Table
 public class Inventory {
-    @Column
-    String code;
-    @Column
-    String name;
     @Id
     @Column
     String batch;
     @Column
-    int stock;
+    String code;
     @Column
-    int deal;
+    String name;
     @Column
-    int free;
+    String stock;
     @Column
-    double mrp;
+    String deal;
     @Column
-    double rate;
+    String free;
+    @Column
+    String mrp;
+    @Column
+    String rate;
     @Column
     String exp;
     @Column
