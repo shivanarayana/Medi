@@ -17,15 +17,15 @@ public class Inventory {
     @Column
     String name;
     @Column
-    String stock;
+    int stock;
     @Column
-    String deal;
+    int deal;
     @Column
-    String free;
+    int free;
     @Column
-    String mrp;
+    double mrp;
     @Column
-    String rate;
+    double rate;
     @Column
     String exp;
     @Column
