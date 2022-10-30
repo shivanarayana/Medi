@@ -3,19 +3,17 @@ package com.example.Medi.Service;
 import com.example.Medi.DTO.Inventory;
 import com.example.Medi.Repository.InventoryRepository;
 import com.univocity.parsers.common.record.Record;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class InventoryService {
-//    private static final Logger logger = LoggerFactory.getLogger(InventoryService.class);
+    private static final Logger logger = LoggerFactory.getLogger(InventoryService.class);
 
     @Autowired
     InventoryRepository inventoryRepository;
@@ -46,7 +44,7 @@ public class InventoryService {
         inventoryRepository.save(inventory);
     }
 
-    public boolean isExpired(String exp) throws Exception{
+    public boolean isExpired(String exp) throws Exception {
         try {
             String[] arrExp = exp.split("/", 0);
 
@@ -71,8 +69,8 @@ public class InventoryService {
                     }
                 }
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
+            logger.error("Exception Handled Inside isExpired:" + e);
             return true;
         }
         return true;

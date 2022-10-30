@@ -4,8 +4,8 @@ import com.example.Medi.DTO.Inventory;
 import com.example.Medi.Repository.InventoryRepository;
 import com.example.Medi.Service.InventoryService;
 import com.univocity.parsers.csv.CsvParser;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,7 +19,8 @@ import static com.example.Medi.Constants.MediConstants.*;
 
 @RestController
 public class InventoryController {
-//    private static final Logger logger = LoggerFactory.getLogger(InventoryController.class);
+
+    private static final Logger logger = LoggerFactory.getLogger(InventoryController.class);
 
     @Autowired
     InventoryService inventoryService;
@@ -42,6 +43,7 @@ public class InventoryController {
             return productsList;
         } catch (Exception e) {
             List<String> productResponse = Arrays.asList("Records Not Found", "Please Recheck the Name/Id");
+            logger.error("Exception Handled: Product find failed" + e);
             return productResponse;
         }
     }
@@ -61,7 +63,8 @@ public class InventoryController {
                     }
                 }
             } catch (Exception e) {
-                List<String> productResponse = Arrays.asList(e.toString(),"Records Not Found", "Please Recheck the Name/Id");
+                List<String> productResponse = Arrays.asList(e.toString(), "Records Not Found", "Please Recheck the Name/Id");
+                logger.error("Exception Handled:" + e);
                 return productResponse;
             }
         }
